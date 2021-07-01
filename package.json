@@ -1,20 +1,24 @@
 {
-  "name": "jest-webdriver",
-  "private": true,
-  "dependencies": {
-    "jest": "^22.4.3",
-    "jest-junit": "^3.6.0"
-  },
-  "workspaces": [
-    "packages/*"
-  ],
-  "jest": {
-    "projects": [
-      "packages/*"
-    ]
-  },
+  "name": "jest-environment-webdriver",
+  "version": "0.3.0",
+  "description": "Use Jest to run tests in Selenium WebDriver",
+  "main": "modules/WebDriverEnvironment.js",
   "scripts": {
-    "test": "jest --coverage",
-    "ci": "sh scripts/integration.sh"
+    "test": "jest"
+  },
+  "author": "Alexey Raspopov",
+  "license": "MIT",
+  "dependencies": {
+    "jest-environment-node": "~27.0.6",
+    "selenium-webdriver": "~4.0.0-alpha.1"
+  },
+  "peerDependencies": {
+    "jest": "^27.0.6"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6"
+  },
+  "engines": {
+    "node": ">=8"
   }
 }

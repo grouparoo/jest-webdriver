@@ -1,30 +1,24 @@
-# Jest WebDriver Integration
+# jest-environment-webdriver
 
-Connect [Jest][1] tests to [Selenium WebDriver][2].
+Connect [Jest](http://facebook.github.io/jest/) tests to [Selenium WebDriver](http://www.seleniumhq.org/projects/webdriver/).
 
-## Limitations
-
-The project is in progress. It only supports running [preinstalled][3] WebDrivers (Chrome, Safari, Firefox, Edge, IE) without additional options. Capabilities configuration will be added soon. Pull requests welcomed.
+    npm install --save-dev jest-environment-webdriver
 
 ## Usage
 
-The project includes next packages that are available via NPM:
+Set [`testEnvironment`](https://facebook.github.io/jest/docs/en/configuration.html#testenvironment-string) to `jest-environment-webdriver` and select target browser using [`testEnvironmentOptions`](https://facebook.github.io/jest/docs/en/configuration.html#testenvironmentoptions-object):
 
- * [`jest-environment-webdriver`](./packages/jest-environment-webdriver) — custom Jest environment that allows tests to communicate with Selenium WebDriver
- * [`jest-screenshot-reporter`](./packages/jest-screenshot-reporter) — complementary Jasmine reporter that captures screenshots for failed tests
+    "testEnvironment": "jest-environment-webdriver",
+    "testEnvironmentOptions": {
+      "browser": "safari"
+    }
 
-## Examples
+## Environment API
 
-In `examples` folder you can find complete demo projects with installed Jest WebDriver packages and a sample test case that does a thing.
+Next global objects and functions are available in testing code.
 
- * [Basic Test Case](https://github.com/alexeyraspopov/jest-webdriver/tree/master/examples/basic-testcase) — a demo project that includes minimum configuration and runs a single test that is written with all the recommended design patterns
-
-## Documentation
-
-Complete documentation and guidelines are in progress. You can find basic API reference in each package's folder.
-
-As a complete "getting started" guide please read [Testing javascript applications with Selenium, Async/Await, and Jest](https://blog.evantahler.com/testing-javascript-applications-with-selenium-async-await-and-jest-7580ed074f2b).
-
- [1]: http://facebook.github.io/jest/
- [2]: http://www.seleniumhq.org/projects/webdriver/
- [3]: https://github.com/SeleniumHQ/selenium/tree/master/javascript/node/selenium-webdriver#installation
+ * `browser` — reference to [`WebDriver`](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index_exports_WebDriver.html) instance
+ * `by` — alias to [`By`](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index_exports_By.html)
+ * `element` — alias to [`Driver#findElement`](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/chrome_exports_Driver.html#findElement)
+ * `element.all` — alias to [`Driver#findElements`](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/chrome_exports_Driver.html#findElements)
+ * `until` — alias to [`until`](http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/lib/until.html).
